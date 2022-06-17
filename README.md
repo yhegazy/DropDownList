@@ -3,9 +3,7 @@
 
 <p>Dependancies are:
 <code>
-  
   npm install react-popupbox tailwindcss postcss-cli postcss autoprefixer@latest -D
-  
 </code>
 </p>
 
