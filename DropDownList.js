@@ -12,7 +12,7 @@ const DropDownList = () => {
     const handleDropDownList = (targetValue) => {
         if(targetValue === 'Create New List') {
             //Prompt user to name new list or use default name
-            let listName = prompt("New List Name: ", `$List ${dropDownList.length> 0 ? dropDownList.length+1 : 1}`)
+            let listName = prompt("New List Name: ", `List ${dropDownList.length> 0 ? dropDownList.length+1 : 1}`)
 
             //Ensure listName exists and does not count if null. Automatically set option to user's list name
             listName !== null && setDropDownList(prevState => [...prevState, listName])
