@@ -5,15 +5,14 @@ import {useState} from 'react'
 import { PopupboxManager } from 'react-popupbox';
 import "react-popupbox/dist/react-popupbox.css"
    
-const DropDownList = (props) => {
-    const {localComponent, subMenu} = props
+const DropDownList = () => {
     const [dropDownOption, setDropDownOption] = useState("")
     const [dropDownList, setDropDownList] = useState([])
 
     const handleDropDownList = (targetValue) => {
         if(targetValue === 'Create New List') {
             //Prompt user to name new list or use default name
-            let listName = prompt("New List Name: ", `${localComponent} ${dropDownList.length> 0 ? dropDownList.length+1 : 1}`)
+            let listName = prompt("New List Name: ", `$List ${dropDownList.length> 0 ? dropDownList.length+1 : 1}`)
 
             //Ensure listName exists and does not count if null. Automatically set option to user's list name
             listName !== null && setDropDownList(prevState => [...prevState, listName])
@@ -28,7 +27,7 @@ const DropDownList = (props) => {
                     <table className="table">
                         <thead><tr><th scope="col" key="LSHEADER">List Name</th></tr></thead>
                         <tbody>
-                            {dropDownList.map((option) =>  <tr  className="">
+                            {dropDownList.map((option) =>  <tr>
                                 <td>{option}</td>
                                 <td>
                                     <button onClick={(e) => handleRemoveButton(e)} value={option}>
@@ -55,11 +54,11 @@ const DropDownList = (props) => {
     }
     
     return <div className="w-1/6 px-3 pb-1 my-4 bg-transparent bg-gray-100 rounded shadow">
-            <h4 className='flex justify-center text-lg'>Add New {localComponent} </h4>
+            <h4 className='flex justify-center text-lg'>Add New List </h4>
             <select className="border-black" name="type" value={dropDownOption} onChange={e => handleDropDownList(e.target.value) }>
             <option>Select One</option>
             <option>Create New List</option>
-            {dropDownList.map((name) => <option key={`${subMenu}-${name}`}>{name}</option>)}
+            {dropDownList.map((name) => <option key={name}>{name}</option>)}
             {dropDownList.length > 0 && <option>Delete List</option>}
         </select>
     </div>
